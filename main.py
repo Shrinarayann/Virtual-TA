@@ -5,6 +5,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List, Dict
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 # --- Environment Variables ---
 load_dotenv()  # Loads from .env in local dev; Render uses dashboard env vars
@@ -22,6 +23,16 @@ app = FastAPI(
     description="An API to answer questions about the Tools in Data Science course.",
     version="1.0.0"
 )
+
+# --- CORS Middleware ---
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # You can restrict this to your frontend domain for more security
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # --- Pydantic Models ---
 class QueryRequest(BaseModel):

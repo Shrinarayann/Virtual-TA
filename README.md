@@ -34,7 +34,7 @@ pip install -r requirements.txt
 ```bash
 uvicorn main:app --reload
 ```
-Visit: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+Visit: https://virtual-ta-2-n3aq.onrender.com/api
 
 ---
 
